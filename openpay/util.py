@@ -8,7 +8,8 @@ __all__ = ['utf8']
 
 
 def utf8(value):
-    if isinstance(value, unicode) and sys.version_info < (3, 0):
-        return value.encode('utf-8')
-    else:
+    if isinstance(value, bytes):
         return value
+    if isinstance(value, str):
+        return value.encode('utf-8')
+    return value
